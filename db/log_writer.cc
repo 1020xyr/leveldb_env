@@ -20,14 +20,9 @@ static void InitTypeCrc(uint32_t* type_crc) {
   }
 }
 
-Writer::Writer(WritableFile* dest) : dest_(dest), block_offset_(0) {
-  InitTypeCrc(type_crc_);
-}
+Writer::Writer(WritableFile* dest) : dest_(dest), block_offset_(0) { InitTypeCrc(type_crc_); }
 
-Writer::Writer(WritableFile* dest, uint64_t dest_length)
-    : dest_(dest), block_offset_(dest_length % kBlockSize) {
-  InitTypeCrc(type_crc_);
-}
+Writer::Writer(WritableFile* dest, uint64_t dest_length) : dest_(dest), block_offset_(dest_length % kBlockSize) { InitTypeCrc(type_crc_); }
 
 Writer::~Writer() = default;
 
@@ -41,22 +36,22 @@ Status Writer::AddRecord(const Slice& slice) {
   Status s;
   bool begin = true;
   do {
-    const int leftover = kBlockSize - block_offset_;
+    const int leftover = kBlockSize - block_offset_;  // 日志块中剩余空间
     assert(leftover >= 0);
-    if (leftover < kHeaderSize) {
+    if (leftover < kHeaderSize) {  // 剩余空间小于记录头部大小，直接填充0
       // Switch to a new block
       if (leftover > 0) {
         // Fill the trailer (literal below relies on kHeaderSize being 7)
         static_assert(kHeaderSize == 7, "");
         dest_->Append(Slice("\x00\x00\x00\x00\x00\x00", leftover));
       }
-      block_offset_ = 0;
+      block_offset_ = 0;  // 重置日志块偏移
     }
 
     // Invariant: we never leave < kHeaderSize bytes in a block.
     assert(kBlockSize - block_offset_ - kHeaderSize >= 0);
 
-    const size_t avail = kBlockSize - block_offset_ - kHeaderSize;
+    const size_t avail = kBlockSize - block_offset_ - kHeaderSize;  // 实际数据可用空间
     const size_t fragment_length = (left < avail) ? left : avail;
 
     RecordType type;
@@ -71,7 +66,7 @@ Status Writer::AddRecord(const Slice& slice) {
       type = kMiddleType;
     }
 
-    s = EmitPhysicalRecord(type, ptr, fragment_length);
+    s = EmitPhysicalRecord(type, ptr, fragment_length);  // 提交一条记录
     ptr += fragment_length;
     left -= fragment_length;
     begin = false;
@@ -79,20 +74,22 @@ Status Writer::AddRecord(const Slice& slice) {
   return s;
 }
 
-Status Writer::EmitPhysicalRecord(RecordType t, const char* ptr,
-                                  size_t length) {
+Status Writer::EmitPhysicalRecord(RecordType t, const char* ptr, size_t length) {
   assert(length <= 0xffff);  // Must fit in two bytes
   assert(block_offset_ + kHeaderSize + length <= kBlockSize);
 
   // Format the header
   char buf[kHeaderSize];
+  // 编码记录长度
   buf[4] = static_cast<char>(length & 0xff);
   buf[5] = static_cast<char>(length >> 8);
+  // 编码记录类型
   buf[6] = static_cast<char>(t);
 
   // Compute the crc of the record type and the payload.
   uint32_t crc = crc32c::Extend(type_crc_[t], ptr, length);
   crc = crc32c::Mask(crc);  // Adjust for storage
+  // 编码校验和
   EncodeFixed32(buf, crc);
 
   // Write the header and the payload
@@ -103,7 +100,7 @@ Status Writer::EmitPhysicalRecord(RecordType t, const char* ptr,
       s = dest_->Flush();
     }
   }
-  block_offset_ += kHeaderSize + length;
+  block_offset_ += kHeaderSize + length;  // 更新块内偏移量
   return s;
 }
 

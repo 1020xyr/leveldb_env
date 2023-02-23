@@ -18,15 +18,13 @@ static Slice GetLengthPrefixedSlice(const char* data) {
   return Slice(p, len);
 }
 
-MemTable::MemTable(const InternalKeyComparator& comparator)
-    : comparator_(comparator), refs_(0), table_(comparator_, &arena_) {}
+MemTable::MemTable(const InternalKeyComparator& comparator) : comparator_(comparator), refs_(0), table_(comparator_, &arena_) {}
 
 MemTable::~MemTable() { assert(refs_ == 0); }
 
 size_t MemTable::ApproximateMemoryUsage() { return arena_.MemoryUsage(); }
 
-int MemTable::KeyComparator::operator()(const char* aptr,
-                                        const char* bptr) const {
+int MemTable::KeyComparator::operator()(const char* aptr, const char* bptr) const {
   // Internal keys are encoded as length-prefixed strings.
   Slice a = GetLengthPrefixedSlice(aptr);
   Slice b = GetLengthPrefixedSlice(bptr);
@@ -73,8 +71,7 @@ class MemTableIterator : public Iterator {
 
 Iterator* MemTable::NewIterator() { return new MemTableIterator(&table_); }
 
-void MemTable::Add(SequenceNumber s, ValueType type, const Slice& key,
-                   const Slice& value) {
+void MemTable::Add(SequenceNumber s, ValueType type, const Slice& key, const Slice& value) {
   // Format of an entry is concatenation of:
   //  key_size     : varint32 of internal_key.size()
   //  key bytes    : char[internal_key.size()]
@@ -83,19 +80,20 @@ void MemTable::Add(SequenceNumber s, ValueType type, const Slice& key,
   //  value bytes  : char[value.size()]
   size_t key_size = key.size();
   size_t val_size = value.size();
-  size_t internal_key_size = key_size + 8;
-  const size_t encoded_len = VarintLength(internal_key_size) +
-                             internal_key_size + VarintLength(val_size) +
-                             val_size;
+  size_t internal_key_size = key_size + 8;                                                                             // 内部key，额外编码了序列号与请求类型
+  const size_t encoded_len = VarintLength(internal_key_size) + internal_key_size + VarintLength(val_size) + val_size;  // 数据整体长度
   char* buf = arena_.Allocate(encoded_len);
+  // 编码internal_key部分                                                                        // 向内存池请求相应大小空间
   char* p = EncodeVarint32(buf, internal_key_size);
   std::memcpy(p, key.data(), key_size);
   p += key_size;
   EncodeFixed64(p, (s << 8) | type);
   p += 8;
+  // 编码value部分
   p = EncodeVarint32(p, val_size);
   std::memcpy(p, value.data(), val_size);
   assert(p + val_size == buf + encoded_len);
+  // 插入跳表
   table_.Insert(buf);
 }
 
@@ -116,8 +114,7 @@ bool MemTable::Get(const LookupKey& key, std::string* value, Status* s) {
     const char* entry = iter.key();
     uint32_t key_length;
     const char* key_ptr = GetVarint32Ptr(entry, entry + 5, &key_length);
-    if (comparator_.comparator.user_comparator()->Compare(
-            Slice(key_ptr, key_length - 8), key.user_key()) == 0) {
+    if (comparator_.comparator.user_comparator()->Compare(Slice(key_ptr, key_length - 8), key.user_key()) == 0) {
       // Correct user key
       const uint64_t tag = DecodeFixed64(key_ptr + key_length - 8);
       switch (static_cast<ValueType>(tag & 0xff)) {

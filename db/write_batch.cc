@@ -45,23 +45,22 @@ Status WriteBatch::Iterate(Handler* handler) const {
     return Status::Corruption("malformed WriteBatch (too small)");
   }
 
-  input.remove_prefix(kHeader);
+  input.remove_prefix(kHeader);  // 移除头部信息（8字节序列号4字节数目）
   Slice key, value;
   int found = 0;
   while (!input.empty()) {
     found++;
-    char tag = input[0];
+    char tag = input[0];  // 当前请求类型
     input.remove_prefix(1);
     switch (tag) {
-      case kTypeValue:
-        if (GetLengthPrefixedSlice(&input, &key) &&
-            GetLengthPrefixedSlice(&input, &value)) {
+      case kTypeValue:  // 插入请求
+        if (GetLengthPrefixedSlice(&input, &key) && GetLengthPrefixedSlice(&input, &value)) {
           handler->Put(key, value);
         } else {
           return Status::Corruption("bad WriteBatch Put");
         }
         break;
-      case kTypeDeletion:
+      case kTypeDeletion:  // 删除请求
         if (GetLengthPrefixedSlice(&input, &key)) {
           handler->Delete(key);
         } else {
@@ -79,27 +78,19 @@ Status WriteBatch::Iterate(Handler* handler) const {
   }
 }
 
-int WriteBatchInternal::Count(const WriteBatch* b) {
-  return DecodeFixed32(b->rep_.data() + 8);
-}
+int WriteBatchInternal::Count(const WriteBatch* b) { return DecodeFixed32(b->rep_.data() + 8); }
 
-void WriteBatchInternal::SetCount(WriteBatch* b, int n) {
-  EncodeFixed32(&b->rep_[8], n);
-}
+void WriteBatchInternal::SetCount(WriteBatch* b, int n) { EncodeFixed32(&b->rep_[8], n); }
 
-SequenceNumber WriteBatchInternal::Sequence(const WriteBatch* b) {
-  return SequenceNumber(DecodeFixed64(b->rep_.data()));
-}
+SequenceNumber WriteBatchInternal::Sequence(const WriteBatch* b) { return SequenceNumber(DecodeFixed64(b->rep_.data())); }
 
-void WriteBatchInternal::SetSequence(WriteBatch* b, SequenceNumber seq) {
-  EncodeFixed64(&b->rep_[0], seq);
-}
+void WriteBatchInternal::SetSequence(WriteBatch* b, SequenceNumber seq) { EncodeFixed64(&b->rep_[0], seq); }
 
 void WriteBatch::Put(const Slice& key, const Slice& value) {
-  WriteBatchInternal::SetCount(this, WriteBatchInternal::Count(this) + 1);
-  rep_.push_back(static_cast<char>(kTypeValue));
-  PutLengthPrefixedSlice(&rep_, key);
-  PutLengthPrefixedSlice(&rep_, value);
+  WriteBatchInternal::SetCount(this, WriteBatchInternal::Count(this) + 1);  // 计数加一
+  rep_.push_back(static_cast<char>(kTypeValue));                            // 插入请求
+  PutLengthPrefixedSlice(&rep_, key);                                       // 编码key至字符串
+  PutLengthPrefixedSlice(&rep_, value);                                     // 编码value至字符串
 }
 
 void WriteBatch::Delete(const Slice& key) {
@@ -108,9 +99,7 @@ void WriteBatch::Delete(const Slice& key) {
   PutLengthPrefixedSlice(&rep_, key);
 }
 
-void WriteBatch::Append(const WriteBatch& source) {
-  WriteBatchInternal::Append(this, &source);
-}
+void WriteBatch::Append(const WriteBatch& source) { WriteBatchInternal::Append(this, &source); }
 
 namespace {
 class MemTableInserter : public WriteBatch::Handler {
@@ -119,8 +108,8 @@ class MemTableInserter : public WriteBatch::Handler {
   MemTable* mem_;
 
   void Put(const Slice& key, const Slice& value) override {
-    mem_->Add(sequence_, kTypeValue, key, value);
-    sequence_++;
+    mem_->Add(sequence_, kTypeValue, key, value);  // 将key-value写入跳表
+    sequence_++;                                   // 序列号加一
   }
   void Delete(const Slice& key) override {
     mem_->Add(sequence_, kTypeDeletion, key, Slice());
