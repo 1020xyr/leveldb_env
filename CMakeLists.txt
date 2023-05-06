@@ -191,6 +191,7 @@ target_sources(leveldb
     "util/status.cc"
 
     "myenv/filesystem.cc"
+    "myenv/filesystem.h"
     "myenv/simple_env.cc"
   # Only CMake 3.3+ supports PUBLIC sources in targets exported by "install".
   $<$<VERSION_GREATER:CMAKE_VERSION,3.2>:PUBLIC>
@@ -209,8 +210,6 @@ target_sources(leveldb
     "${LEVELDB_PUBLIC_INCLUDE_DIR}/table_builder.h"
     "${LEVELDB_PUBLIC_INCLUDE_DIR}/table.h"
     "${LEVELDB_PUBLIC_INCLUDE_DIR}/write_batch.h"
-    "${LEVELDB_PUBLIC_INCLUDE_DIR}/simple_env.h"
-    "${LEVELDB_PUBLIC_INCLUDE_DIR}/filesystem.h"
 )
 
 if (WIN32)
@@ -492,9 +491,6 @@ if(LEVELDB_INSTALL)
       "${LEVELDB_PUBLIC_INCLUDE_DIR}/table_builder.h"
       "${LEVELDB_PUBLIC_INCLUDE_DIR}/table.h"
       "${LEVELDB_PUBLIC_INCLUDE_DIR}/write_batch.h"
-
-      "${LEVELDB_PUBLIC_INCLUDE_DIR}/simple_env.h"
-      "${LEVELDB_PUBLIC_INCLUDE_DIR}/filesystem.h"
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/leveldb"
   )
 

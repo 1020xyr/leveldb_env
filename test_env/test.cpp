@@ -7,7 +7,6 @@
 #include <leveldb/db.h>
 #include <leveldb/write_batch.h>
 #include <leveldb/env.h>
-#include <leveldb/simple_env.h>
 
 std::string RandStr(int min_len, int max_len) {  // 生成min_len-max_len之间大小的字符串
   int len = rand() % (max_len - min_len + 1) + min_len;
@@ -32,7 +31,8 @@ void PrintStats(leveldb::DB* db, std::string key) {
 int main() {
   leveldb::DB* db;
   leveldb::Options options;
-  options.env = leveldb::SimpleEnv::GetInstance();
+  // options.env = leveldb::Env::GetSimpleEnv();
+  options.env = leveldb::Env::GetMemEnv();
   options.create_if_missing = true;  // 不存在时创建数据库
   leveldb::Status status = leveldb::DB::Open(options, "./testdb", &db);
 

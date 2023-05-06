@@ -6,4 +6,5 @@
 # Build directory.
 build/
 out/
-build-1/
+build_dbg/
+build_env/
