@@ -1,7 +1,7 @@
 #include "myenv/filesystem.h"
 
 namespace leveldb {
-std::vector<blk_no_t> BlockLayer::AllocBlocks(int num) {
+std::vector<blk_no_t> BlockLayer::AllocBlocks(int num) {  // 分配多个块
   int pre_index = std::atomic_fetch_add(&cur_index_, num);
   std::vector<blk_no_t> blocks;
   for (blk_no_t i = pre_index; i < pre_index + num; i++) {
@@ -20,7 +20,7 @@ void File::Unref() {
   {
     std::lock_guard<std::mutex> lk(ref_mutex_);
     ref_--;
-    if (ref_ <= 0) {
+    if (ref_ <= 0) {  // 引用计数减至0，需删除
       do_delete = true;
     }
   }
@@ -115,7 +115,7 @@ Status DataFile::Append(const Slice& data) {
     write_size -= kBlockSize;
   }
 
-  // 第三步：将数据写入缓冲区
+  // 第三步：将剩余数据写入缓冲区
   if (write_size > 0) {
     memcpy(buf_, write_data, write_size);
     buf_pos_ += write_size;
@@ -127,6 +127,10 @@ void DataFile::Truncate() {
   std::lock_guard<std::mutex> lk(data_mu_);
   blocks_.clear();
   buf_pos_ = 0;
+}
+uint64_t DataFile::GetFileLen() {
+  std::lock_guard<std::mutex> lk(data_mu_);
+  return blocks_.size() * kBlockSize + buf_pos_;
 }
 
 std::string Helper::GetParentDir(const std::string& path) {
@@ -147,12 +151,14 @@ SimpleFileSystem* SimpleFileSystem::GetInstance() {  // 内部静态变量的懒
 
 DataFile* SimpleFileSystem::NewDataFile(const std::string& fname) {
   std::lock_guard<std::mutex> lk(mu_);
-  if (files_.count(fname) == 0) {
+  if (files_.count(fname) == 0) {  // 若不存在则创建新文件
     printf("create data file:%s\n", fname.c_str());
     DataFile* file = new DataFile();
     files_.emplace(fname, file);  // 添加文件名-数据文件映射
+
+    // 在父目录下添加文件信息
     auto dir = Helper::GetParentDir(fname);
-    if (dirs_.count(dir) > 0) {  // 在父目录下添加文件信息
+    if (dirs_.count(dir) > 0) {
       dirs_[dir]->AddChildren({fname, FileType::DataFile});
     }
   }
@@ -161,12 +167,14 @@ DataFile* SimpleFileSystem::NewDataFile(const std::string& fname) {
 
 Directory* SimpleFileSystem::NewDirectory(const std::string& dirname) {
   std::lock_guard<std::mutex> lk(mu_);
-  if (dirs_.count(dirname) == 0) {
+  if (dirs_.count(dirname) == 0) {  // 若不存在则创建新目录
     printf("create directory:%s\n", dirname.c_str());
     Directory* dir = new Directory();
     dirs_.emplace(dirname, dir);  // 添加文件名-目录文件映射
+
+    // 在父目录下添加文件信息
     auto parent_dir = Helper::GetParentDir(dirname);
-    if (dirs_.count(parent_dir) > 0) {  // 在父目录下添加文件信息
+    if (dirs_.count(parent_dir) > 0) {
       dirs_[parent_dir]->AddChildren({dirname, FileType::Directory});
     }
   }
@@ -207,14 +215,20 @@ Status SimpleFileSystem::GetChildren(const std::string& dirname, std::vector<std
 Status SimpleFileSystem::RemoveFile(const std::string& fname) {
   std::lock_guard<std::mutex> lk(mu_);
   printf("delete file %s\n", fname.c_str());
+  // 在父目录中删除该文件信息
   std::string parent = Helper::GetParentDir(fname);
   if (dirs_.count(parent) == 0) {
     return Status::IOError("parent directory isn't exist.");
   }
-  bool ret = dirs_[parent]->DeleteChildren(fname);
-  if (!ret) {
+  if (!dirs_[parent]->DeleteChildren(fname)) {
     return Status::IOError("can't find children.");
   }
+
+  // 删除实际文件
+  if (files_.count(fname) == 0) {
+    return Status::IOError(fname, "File not found");
+  }
+  files_[fname]->Unref();
   files_.erase(fname);
   return Status::OK();
 }
@@ -227,14 +241,21 @@ Status SimpleFileSystem::CreateDir(const std::string& dirname) {
 Status SimpleFileSystem::RemoveDir(const std::string& dirname) {
   std::lock_guard<std::mutex> lk(mu_);
   printf("delete directory %s\n", dirname.c_str());
+  // 在父目录下删除目录信息
   std::string parent = Helper::GetParentDir(dirname);
   if (dirs_.count(parent) == 0) {
     return Status::IOError("parent directory isn't exist.");
   }
-  bool ret = dirs_[parent]->DeleteChildren(dirname);
-  if (!ret) {
+
+  if (!dirs_[parent]->DeleteChildren(dirname)) {
     return Status::IOError("can't find children.");
   }
+
+  // 删除实际目录
+  if (dirs_.count(dirname) == 0) {
+    return Status::IOError(dirname, "directory not found");
+  }
+  dirs_[dirname]->Unref();  // 减小引用计数
   dirs_.erase(dirname);
   return Status::OK();
 }
@@ -256,15 +277,17 @@ Status SimpleFileSystem::RenameFile(const std::string& src, const std::string& t
   }
   files_.emplace(target, files_[src]);  // 添加文件名-数据文件映射
   files_.erase(src);                    // 删除旧文件名-数据文件映射
+
+  // 在父目录下修改文件信息
   auto dir = Helper::GetParentDir(src);
-  if (dirs_.count(dir) > 0) {  // 在父目录下添加文件信息
+  if (dirs_.count(dir) > 0) {
     dirs_[dir]->DeleteChildren(src);
     dirs_[dir]->AddChildren({target, FileType::DataFile});
   }
   return Status::OK();
 }
 
-SimpleFileSystem::~SimpleFileSystem() {
+SimpleFileSystem::~SimpleFileSystem() {  // 降低文件与目录的引用计数
   for (auto [name, p] : files_) {
     p->Unref();
   }

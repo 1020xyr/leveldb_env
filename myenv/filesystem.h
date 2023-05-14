@@ -54,12 +54,12 @@ class BlockLayer {
 
 class File {
  public:
-  File() : ref_(1) {}
+  File() : ref_(1) {}  // 初始引用计数为1
   // 禁止拷贝
   File(const File&) = delete;
   File& operator=(const File&) = delete;
-  void Ref();
-  void Unref();
+  void Ref();    // 增加引用计数
+  void Unref();  // 减少引用计数
   virtual ~File() = default;
 
  private:
@@ -70,7 +70,7 @@ class File {
 enum class FileType { Directory, DataFile };        // 文件类型分为目录文件与数据文件
 using FileInfo = std::pair<std::string, FileType>;  // 文件名-文件类型
 
-class Directory : public File {
+class Directory : public File {  // 目录文件
  public:
   Directory() = default;
   void AddChildren(FileInfo info);               // 添加子文件
@@ -82,13 +82,13 @@ class Directory : public File {
   std::vector<FileInfo> childrens_;  // 目录下的所有文件
 };
 
-class DataFile : public File {
+class DataFile : public File {  // 数据文件
  public:
   DataFile() : buf_pos_(0) {}
-  Status Read(uint64_t offset, size_t n, Slice* result, char* scratch);     // 读取文件数据
-  Status Append(const Slice& data);                                         // 在文件尾部追加数据
-  void Truncate();                                                          // 清空文件数据
-  uint64_t GetFileLen() { return blocks_.size() * kBlockSize + buf_pos_; }  // 获取文件长度
+  Status Read(uint64_t offset, size_t n, Slice* result, char* scratch);  // 读取文件数据
+  Status Append(const Slice& data);                                      // 在文件尾部追加数据
+  void Truncate();                                                       // 清空文件数据
+  uint64_t GetFileLen();                                                 // 获取文件长度
 
  private:
   std::mutex data_mu_;
@@ -98,7 +98,7 @@ class DataFile : public File {
   std::vector<blk_no_t> blocks_;  // 文件包含数据块
 };
 
-class Helper {
+class Helper {  // 辅助函数
  public:
   static std::string GetParentDir(const std::string& path);  // 获取路径的父目录
 };

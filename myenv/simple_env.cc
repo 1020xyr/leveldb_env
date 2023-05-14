@@ -4,7 +4,7 @@
 #include "myenv/filesystem.h"
 namespace leveldb {
 
-class SimpleSequentialFile : public SequentialFile {
+class SimpleSequentialFile : public SequentialFile {  // 顺序读文件
  public:
   SimpleSequentialFile(DataFile* file) : file_(file), index_(0) { file_->Ref(); }
   ~SimpleSequentialFile() override { file_->Unref(); }
@@ -16,7 +16,7 @@ class SimpleSequentialFile : public SequentialFile {
   uint64_t index_;  // 当前读取位置
 };
 
-class SimpleRandomAccessFile : public RandomAccessFile {
+class SimpleRandomAccessFile : public RandomAccessFile {  // 随机读文件
  public:
   SimpleRandomAccessFile(DataFile* file) : file_(file) { file_->Ref(); }
   ~SimpleRandomAccessFile() override { file_->Unref(); }
@@ -28,7 +28,7 @@ class SimpleRandomAccessFile : public RandomAccessFile {
   DataFile* file_;
 };
 
-class SimpleWritableFile : public WritableFile {
+class SimpleWritableFile : public WritableFile {  // 可写文件
  public:
   SimpleWritableFile(DataFile* file) : file_(file) { file_->Ref(); }
   ~SimpleWritableFile() override { file_->Unref(); }
@@ -50,7 +50,7 @@ class SimpleEnv : public EnvWrapper {
 
   Status NewSequentialFile(const std::string& fname, SequentialFile** result) override {
     DataFile* file = SIMPLE_SYSTEM->GetDataFile(fname);
-    if (file == nullptr) {
+    if (file == nullptr) {  // 若文件不存在则返回错误
       *result = nullptr;
       return Status::IOError(fname, "File not found");
     }
@@ -60,7 +60,7 @@ class SimpleEnv : public EnvWrapper {
 
   Status NewRandomAccessFile(const std::string& fname, RandomAccessFile** result) override {
     DataFile* file = SIMPLE_SYSTEM->GetDataFile(fname);
-    if (file == nullptr) {
+    if (file == nullptr) {  // 若文件不存在则返回错误
       *result = nullptr;
       return Status::IOError(fname, "File not found");
     }
@@ -70,9 +70,9 @@ class SimpleEnv : public EnvWrapper {
 
   Status NewWritableFile(const std::string& fname, WritableFile** result) override {
     DataFile* file = SIMPLE_SYSTEM->GetDataFile(fname);
-    if (file == nullptr) {  // 创建文件
+    if (file == nullptr) {  // 文件不存在则创建文件
       file = SIMPLE_SYSTEM->NewDataFile(fname);
-    } else {  // 清空文件数据
+    } else {  // 文件存在则清空文件数据
       file->Truncate();
     }
     *result = new SimpleWritableFile(file);
@@ -81,7 +81,7 @@ class SimpleEnv : public EnvWrapper {
 
   Status NewAppendableFile(const std::string& fname, WritableFile** result) override {
     DataFile* file = SIMPLE_SYSTEM->GetDataFile(fname);
-    if (file == nullptr) {  // 创建文件
+    if (file == nullptr) {  // 文件不存在则创建文件
       file = SIMPLE_SYSTEM->NewDataFile(fname);
     }
     *result = new SimpleWritableFile(file);
@@ -113,7 +113,7 @@ class SimpleEnv : public EnvWrapper {
   Status UnlockFile(FileLock* lock) { return Status::OK(); }
 
  private:
-  SimpleEnv() : EnvWrapper(Env::Default()){};
+  SimpleEnv() : EnvWrapper(Env::Default()){};  // 选择默认env实现初始化target
 };
 
 Status SimpleSequentialFile::Skip(uint64_t n) {
@@ -127,13 +127,13 @@ Status SimpleSequentialFile::Skip(uint64_t n) {
 
 Status SimpleSequentialFile::Read(size_t n, Slice* result, char* scratch) {
   Status status = file_->Read(index_, n, result, scratch);
-  if (status.ok()) {
+  if (status.ok()) {  // 更新读取位置
     index_ += result->size();
   }
   return status;
 }
 
-Env* Env::GetSimpleEnv() {
+Env* Env::GetSimpleEnv() {  // 实现env.h中定义接口
   Env::GetMemEnv();
   return SimpleEnv::GetInstance();
 }
