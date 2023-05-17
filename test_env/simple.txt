@@ -1,0 +1,910 @@
+create directory:./testdb
+./testdb/LOG rename to ./testdb/LOG.old
+create file:./testdb/MANIFEST-000001
+create file:./testdb/000001.dbtmp
+./testdb/000001.dbtmp rename to ./testdb/CURRENT
+create file:./testdb/000003.log
+create file:./testdb/MANIFEST-000002
+create file:./testdb/000002.dbtmp
+./testdb/000002.dbtmp rename to ./testdb/CURRENT
+remove file ./testdb/MANIFEST-000001
+write part.
+create file:./testdb/000004.log
+create file:./testdb/000005.ldb
+remove file ./testdb/000003.log
+create file:./testdb/000006.log
+create file:./testdb/000007.ldb
+remove file ./testdb/000004.log
+create file:./testdb/000008.log
+create file:./testdb/000009.ldb
+remove file ./testdb/000006.log
+create file:./testdb/000010.log
+create file:./testdb/000011.ldb
+remove file ./testdb/000008.log
+create file:./testdb/000012.log
+create file:./testdb/000013.ldb
+remove file ./testdb/000010.log
+create file:./testdb/000014.log
+create file:./testdb/000015.ldb
+remove file ./testdb/000012.log
+create file:./testdb/000016.ldb
+create file:./testdb/000017.ldb
+create file:./testdb/000018.log
+create file:./testdb/000019.ldb
+remove file ./testdb/000014.log
+create file:./testdb/000020.ldb
+create file:./testdb/000021.ldb
+create file:./testdb/000022.log
+create file:./testdb/000023.ldb
+remove file ./testdb/000018.log
+create file:./testdb/000024.ldb
+create file:./testdb/000025.ldb
+create file:./testdb/000026.log
+create file:./testdb/000027.ldb
+remove file ./testdb/000022.log
+create file:./testdb/000028.ldb
+create file:./testdb/000029.ldb
+create file:./testdb/000030.log
+create file:./testdb/000031.ldb
+remove file ./testdb/000026.log
+create file:./testdb/000032.ldb
+remove file ./testdb/000007.ldb
+remove file ./testdb/000009.ldb
+remove file ./testdb/000011.ldb
+remove file ./testdb/000013.ldb
+remove file ./testdb/000015.ldb
+create file:./testdb/000033.ldb
+create file:./testdb/000034.ldb
+create file:./testdb/000035.log
+create file:./testdb/000036.ldb
+remove file ./testdb/000030.log
+create file:./testdb/000037.ldb
+create file:./testdb/000038.ldb
+create file:./testdb/000039.log
+create file:./testdb/000040.ldb
+remove file ./testdb/000035.log
+create file:./testdb/000041.ldb
+create file:./testdb/000042.ldb
+create file:./testdb/000043.log
+create file:./testdb/000044.ldb
+remove file ./testdb/000039.log
+create file:./testdb/000045.ldb
+create file:./testdb/000046.ldb
+create file:./testdb/000047.log
+create file:./testdb/000048.ldb
+remove file ./testdb/000043.log
+create file:./testdb/000049.ldb
+create file:./testdb/000050.ldb
+create file:./testdb/000051.ldb
+remove file ./testdb/000005.ldb
+remove file ./testdb/000016.ldb
+remove file ./testdb/000017.ldb
+remove file ./testdb/000020.ldb
+remove file ./testdb/000021.ldb
+remove file ./testdb/000024.ldb
+remove file ./testdb/000025.ldb
+remove file ./testdb/000028.ldb
+remove file ./testdb/000029.ldb
+remove file ./testdb/000032.ldb
+create file:./testdb/000052.ldb
+create file:./testdb/000053.ldb
+create file:./testdb/000054.ldb
+create file:./testdb/000055.ldb
+create file:./testdb/000056.ldb
+create file:./testdb/000057.ldb
+create file:./testdb/000058.ldb
+create file:./testdb/000059.ldb
+create file:./testdb/000060.ldb
+create file:./testdb/000061.ldb
+create file:./testdb/000062.ldb
+create file:./testdb/000063.ldb
+create file:./testdb/000064.ldb
+create file:./testdb/000065.ldb
+create file:./testdb/000066.ldb
+remove file ./testdb/000019.ldb
+remove file ./testdb/000023.ldb
+remove file ./testdb/000027.ldb
+remove file ./testdb/000031.ldb
+remove file ./testdb/000036.ldb
+remove file ./testdb/000040.ldb
+remove file ./testdb/000044.ldb
+remove file ./testdb/000048.ldb
+create file:./testdb/000067.ldb
+create file:./testdb/000068.ldb
+remove file ./testdb/000051.ldb
+remove file ./testdb/000066.ldb
+create file:./testdb/000069.ldb
+create file:./testdb/000070.log
+create file:./testdb/000071.ldb
+remove file ./testdb/000047.log
+create file:./testdb/000072.ldb
+remove file ./testdb/000033.ldb
+remove file ./testdb/000052.ldb
+create file:./testdb/000073.ldb
+create file:./testdb/000074.log
+create file:./testdb/000075.ldb
+remove file ./testdb/000070.log
+create file:./testdb/000076.ldb
+create file:./testdb/000077.ldb
+remove file ./testdb/000034.ldb
+remove file ./testdb/000053.ldb
+remove file ./testdb/000072.ldb
+create file:./testdb/000078.ldb
+create file:./testdb/000079.log
+create file:./testdb/000080.ldb
+remove file ./testdb/000074.log
+create file:./testdb/000081.ldb
+create file:./testdb/000082.ldb
+create file:./testdb/000083.log
+create file:./testdb/000084.ldb
+remove file ./testdb/000079.log
+remove file ./testdb/000037.ldb
+remove file ./testdb/000054.ldb
+remove file ./testdb/000077.ldb
+create file:./testdb/000085.ldb
+create file:./testdb/000086.ldb
+create file:./testdb/000087.log
+create file:./testdb/000088.ldb
+remove file ./testdb/000083.log
+remove file ./testdb/000055.ldb
+remove file ./testdb/000082.ldb
+create file:./testdb/000089.ldb
+create file:./testdb/000090.ldb
+create file:./testdb/000091.log
+create file:./testdb/000092.ldb
+remove file ./testdb/000087.log
+create file:./testdb/000093.ldb
+remove file ./testdb/000038.ldb
+remove file ./testdb/000056.ldb
+remove file ./testdb/000086.ldb
+create file:./testdb/000094.ldb
+create file:./testdb/000095.log
+create file:./testdb/000096.ldb
+remove file ./testdb/000091.log
+create file:./testdb/000097.ldb
+create file:./testdb/000098.ldb
+create file:./testdb/000099.log
+create file:./testdb/000100.ldb
+remove file ./testdb/000095.log
+remove file ./testdb/000041.ldb
+remove file ./testdb/000057.ldb
+remove file ./testdb/000093.ldb
+create file:./testdb/000101.ldb
+create file:./testdb/000102.ldb
+create file:./testdb/000103.ldb
+create file:./testdb/000104.ldb
+create file:./testdb/000105.ldb
+create file:./testdb/000106.ldb
+create file:./testdb/000107.ldb
+create file:./testdb/000108.ldb
+create file:./testdb/000109.ldb
+create file:./testdb/000110.ldb
+create file:./testdb/000111.ldb
+create file:./testdb/000112.ldb
+create file:./testdb/000113.ldb
+create file:./testdb/000114.ldb
+create file:./testdb/000115.ldb
+create file:./testdb/000116.ldb
+create file:./testdb/000117.ldb
+create file:./testdb/000118.ldb
+create file:./testdb/000119.ldb
+create file:./testdb/000120.ldb
+create file:./testdb/000121.ldb
+create file:./testdb/000122.ldb
+remove file ./testdb/000058.ldb
+remove file ./testdb/000059.ldb
+remove file ./testdb/000060.ldb
+remove file ./testdb/000061.ldb
+remove file ./testdb/000062.ldb
+remove file ./testdb/000063.ldb
+remove file ./testdb/000064.ldb
+remove file ./testdb/000065.ldb
+remove file ./testdb/000071.ldb
+remove file ./testdb/000075.ldb
+remove file ./testdb/000080.ldb
+remove file ./testdb/000084.ldb
+remove file ./testdb/000088.ldb
+remove file ./testdb/000092.ldb
+remove file ./testdb/000096.ldb
+remove file ./testdb/000100.ldb
+create file:./testdb/000123.ldb
+create file:./testdb/000124.ldb
+remove file ./testdb/000098.ldb
+remove file ./testdb/000107.ldb
+create file:./testdb/000125.ldb
+create file:./testdb/000126.ldb
+create file:./testdb/000127.log
+create file:./testdb/000128.ldb
+remove file ./testdb/000099.log
+create file:./testdb/000129.ldb
+remove file ./testdb/000042.ldb
+remove file ./testdb/000108.ldb
+remove file ./testdb/000124.ldb
+create file:./testdb/000130.ldb
+create file:./testdb/000131.log
+create file:./testdb/000132.ldb
+remove file ./testdb/000127.log
+create file:./testdb/000133.ldb
+remove file ./testdb/000109.ldb
+remove file ./testdb/000129.ldb
+create file:./testdb/000134.ldb
+create file:./testdb/000135.log
+create file:./testdb/000136.ldb
+remove file ./testdb/000131.log
+create file:./testdb/000137.ldb
+create file:./testdb/000138.ldb
+remove file ./testdb/000110.ldb
+remove file ./testdb/000133.ldb
+create file:./testdb/000139.ldb
+create file:./testdb/000140.log
+create file:./testdb/000141.ldb
+remove file ./testdb/000135.log
+create file:./testdb/000142.ldb
+create file:./testdb/000143.ldb
+create file:./testdb/000144.log
+create file:./testdb/000145.ldb
+remove file ./testdb/000140.log
+create file:./testdb/000146.ldb
+remove file ./testdb/000045.ldb
+remove file ./testdb/000111.ldb
+remove file ./testdb/000137.ldb
+remove file ./testdb/000138.ldb
+create file:./testdb/000147.ldb
+create file:./testdb/000148.ldb
+create file:./testdb/000149.log
+create file:./testdb/000150.ldb
+remove file ./testdb/000144.log
+remove file ./testdb/000112.ldb
+remove file ./testdb/000143.ldb
+create file:./testdb/000151.ldb
+create file:./testdb/000152.ldb
+create file:./testdb/000153.ldb
+create file:./testdb/000154.log
+create file:./testdb/000155.ldb
+remove file ./testdb/000149.log
+remove file ./testdb/000046.ldb
+remove file ./testdb/000113.ldb
+remove file ./testdb/000146.ldb
+remove file ./testdb/000148.ldb
+create file:./testdb/000156.ldb
+create file:./testdb/000157.ldb
+create file:./testdb/000158.log
+create file:./testdb/000159.ldb
+remove file ./testdb/000154.log
+create file:./testdb/000160.ldb
+remove file ./testdb/000114.ldb
+remove file ./testdb/000153.ldb
+create file:./testdb/000161.ldb
+create file:./testdb/000162.ldb
+remove file ./testdb/000115.ldb
+remove file ./testdb/000157.ldb
+create file:./testdb/000163.ldb
+create file:./testdb/000164.ldb
+create file:./testdb/000165.ldb
+remove file ./testdb/000049.ldb
+remove file ./testdb/000116.ldb
+remove file ./testdb/000160.ldb
+remove file ./testdb/000162.ldb
+create file:./testdb/000166.ldb
+create file:./testdb/000167.ldb
+remove file ./testdb/000117.ldb
+remove file ./testdb/000165.ldb
+create file:./testdb/000168.ldb
+create file:./testdb/000169.ldb
+remove file ./testdb/000118.ldb
+remove file ./testdb/000167.ldb
+create file:./testdb/000170.ldb
+create file:./testdb/000171.ldb
+create file:./testdb/000172.ldb
+create file:./testdb/000173.ldb
+create file:./testdb/000174.ldb
+create file:./testdb/000175.ldb
+create file:./testdb/000176.ldb
+create file:./testdb/000177.ldb
+create file:./testdb/000178.ldb
+create file:./testdb/000179.ldb
+create file:./testdb/000180.ldb
+create file:./testdb/000181.ldb
+create file:./testdb/000182.ldb
+create file:./testdb/000183.ldb
+create file:./testdb/000184.ldb
+create file:./testdb/000185.ldb
+create file:./testdb/000186.ldb
+create file:./testdb/000187.ldb
+create file:./testdb/000188.ldb
+create file:./testdb/000189.ldb
+create file:./testdb/000190.ldb
+create file:./testdb/000191.ldb
+create file:./testdb/000192.ldb
+create file:./testdb/000193.ldb
+create file:./testdb/000194.ldb
+remove file ./testdb/000101.ldb
+remove file ./testdb/000102.ldb
+remove file ./testdb/000103.ldb
+remove file ./testdb/000104.ldb
+remove file ./testdb/000105.ldb
+remove file ./testdb/000106.ldb
+remove file ./testdb/000119.ldb
+remove file ./testdb/000120.ldb
+remove file ./testdb/000121.ldb
+remove file ./testdb/000122.ldb
+remove file ./testdb/000128.ldb
+remove file ./testdb/000132.ldb
+remove file ./testdb/000136.ldb
+remove file ./testdb/000141.ldb
+remove file ./testdb/000145.ldb
+remove file ./testdb/000150.ldb
+remove file ./testdb/000155.ldb
+remove file ./testdb/000159.ldb
+create file:./testdb/000195.ldb
+create file:./testdb/000196.ldb
+create file:./testdb/000197.log
+create file:./testdb/000198.ldb
+remove file ./testdb/000158.log
+create file:./testdb/000199.ldb
+create file:./testdb/000200.ldb
+create file:./testdb/000201.log
+create file:./testdb/000202.ldb
+remove file ./testdb/000197.log
+remove file ./testdb/000050.ldb
+remove file ./testdb/000168.ldb
+remove file ./testdb/000169.ldb
+remove file ./testdb/000188.ldb
+create file:./testdb/000203.ldb
+create file:./testdb/000204.ldb
+create file:./testdb/000205.log
+create file:./testdb/000206.ldb
+remove file ./testdb/000201.log
+remove file ./testdb/000189.ldb
+remove file ./testdb/000200.ldb
+create file:./testdb/000207.ldb
+create file:./testdb/000208.ldb
+create file:./testdb/000209.log
+create file:./testdb/000210.ldb
+remove file ./testdb/000205.log
+remove file ./testdb/000190.ldb
+remove file ./testdb/000204.ldb
+create file:./testdb/000211.ldb
+create file:./testdb/000212.ldb
+create file:./testdb/000213.log
+create file:./testdb/000214.ldb
+remove file ./testdb/000209.log
+remove file ./testdb/000191.ldb
+remove file ./testdb/000208.ldb
+create file:./testdb/000215.ldb
+create file:./testdb/000216.ldb
+create file:./testdb/000217.log
+create file:./testdb/000218.ldb
+remove file ./testdb/000213.log
+create file:./testdb/000219.ldb
+remove file ./testdb/000067.ldb
+remove file ./testdb/000192.ldb
+remove file ./testdb/000212.ldb
+create file:./testdb/000220.ldb
+create file:./testdb/000221.log
+create file:./testdb/000222.ldb
+remove file ./testdb/000217.log
+create file:./testdb/000223.ldb
+create file:./testdb/000224.ldb
+remove file ./testdb/000068.ldb
+remove file ./testdb/000193.ldb
+remove file ./testdb/000194.ldb
+remove file ./testdb/000219.ldb
+create file:./testdb/000225.ldb
+create file:./testdb/000226.log
+create file:./testdb/000227.ldb
+remove file ./testdb/000221.log
+create file:./testdb/000228.ldb
+remove file ./testdb/000069.ldb
+remove file ./testdb/000170.ldb
+create file:./testdb/000229.ldb
+create file:./testdb/000230.ldb
+create file:./testdb/000231.ldb
+remove file ./testdb/000073.ldb
+remove file ./testdb/000171.ldb
+remove file ./testdb/000228.ldb
+create file:./testdb/000232.ldb
+create file:./testdb/000233.ldb
+create file:./testdb/000234.ldb
+remove file ./testdb/000076.ldb
+remove file ./testdb/000172.ldb
+remove file ./testdb/000231.ldb
+create file:./testdb/000235.ldb
+create file:./testdb/000236.ldb
+create file:./testdb/000237.ldb
+remove file ./testdb/000078.ldb
+remove file ./testdb/000173.ldb
+remove file ./testdb/000234.ldb
+create file:./testdb/000238.ldb
+create file:./testdb/000239.ldb
+create file:./testdb/000240.ldb
+remove file ./testdb/000081.ldb
+remove file ./testdb/000174.ldb
+remove file ./testdb/000237.ldb
+create file:./testdb/000241.ldb
+create file:./testdb/000242.ldb
+create file:./testdb/000243.ldb
+remove file ./testdb/000085.ldb
+remove file ./testdb/000175.ldb
+remove file ./testdb/000240.ldb
+create file:./testdb/000244.ldb
+create file:./testdb/000245.ldb
+create file:./testdb/000246.ldb
+remove file ./testdb/000089.ldb
+remove file ./testdb/000176.ldb
+remove file ./testdb/000243.ldb
+create file:./testdb/000247.ldb
+create file:./testdb/000248.ldb
+remove file ./testdb/000177.ldb
+remove file ./testdb/000246.ldb
+create file:./testdb/000249.ldb
+create file:./testdb/000250.ldb
+create file:./testdb/000251.ldb
+create file:./testdb/000252.ldb
+create file:./testdb/000253.ldb
+create file:./testdb/000254.ldb
+create file:./testdb/000255.ldb
+create file:./testdb/000256.ldb
+create file:./testdb/000257.ldb
+create file:./testdb/000258.ldb
+create file:./testdb/000259.ldb
+create file:./testdb/000260.ldb
+create file:./testdb/000261.ldb
+create file:./testdb/000262.ldb
+create file:./testdb/000263.ldb
+create file:./testdb/000264.ldb
+create file:./testdb/000265.ldb
+create file:./testdb/000266.ldb
+create file:./testdb/000267.ldb
+create file:./testdb/000268.ldb
+create file:./testdb/000269.ldb
+create file:./testdb/000270.ldb
+create file:./testdb/000271.ldb
+create file:./testdb/000272.ldb
+create file:./testdb/000273.ldb
+create file:./testdb/000274.ldb
+remove file ./testdb/000178.ldb
+remove file ./testdb/000179.ldb
+remove file ./testdb/000180.ldb
+remove file ./testdb/000181.ldb
+remove file ./testdb/000182.ldb
+remove file ./testdb/000183.ldb
+remove file ./testdb/000184.ldb
+remove file ./testdb/000185.ldb
+remove file ./testdb/000186.ldb
+remove file ./testdb/000187.ldb
+remove file ./testdb/000198.ldb
+remove file ./testdb/000202.ldb
+remove file ./testdb/000206.ldb
+remove file ./testdb/000210.ldb
+remove file ./testdb/000214.ldb
+remove file ./testdb/000218.ldb
+remove file ./testdb/000222.ldb
+remove file ./testdb/000227.ldb
+create file:./testdb/000275.ldb
+create file:./testdb/000276.ldb
+create file:./testdb/000277.ldb
+create file:./testdb/000278.log
+create file:./testdb/000279.ldb
+remove file ./testdb/000226.log
+create file:./testdb/000280.ldb
+remove file ./testdb/000090.ldb
+remove file ./testdb/000247.ldb
+remove file ./testdb/000248.ldb
+remove file ./testdb/000253.ldb
+create file:./testdb/000281.ldb
+create file:./testdb/000282.log
+create file:./testdb/000283.ldb
+remove file ./testdb/000278.log
+create file:./testdb/000284.ldb
+remove file ./testdb/000254.ldb
+remove file ./testdb/000280.ldb
+create file:./testdb/000285.ldb
+create file:./testdb/000286.log
+create file:./testdb/000287.ldb
+remove file ./testdb/000282.log
+create file:./testdb/000288.ldb
+create file:./testdb/000289.ldb
+remove file ./testdb/000094.ldb
+remove file ./testdb/000255.ldb
+remove file ./testdb/000284.ldb
+create file:./testdb/000290.ldb
+read part.
+create file:./testdb/000291.ldb
+create file:./testdb/000292.ldb
+create file:./testdb/000293.ldb
+create file:./testdb/000294.ldb
+remove file ./testdb/000097.ldb
+remove file ./testdb/000256.ldb
+remove file ./testdb/000289.ldb
+create file:./testdb/000295.ldb
+create file:./testdb/000296.ldb
+create file:./testdb/000297.ldb
+remove file ./testdb/000257.ldb
+remove file ./testdb/000292.ldb
+create file:./testdb/000298.ldb
+create file:./testdb/000299.ldb
+create file:./testdb/000300.ldb
+create file:./testdb/000301.ldb
+remove file ./testdb/000123.ldb
+remove file ./testdb/000258.ldb
+remove file ./testdb/000294.ldb
+create file:./testdb/000302.ldb
+create file:./testdb/000303.ldb
+create file:./testdb/000304.ldb
+remove file ./testdb/000125.ldb
+remove file ./testdb/000259.ldb
+remove file ./testdb/000260.ldb
+remove file ./testdb/000297.ldb
+create file:./testdb/000305.ldb
+create file:./testdb/000306.ldb
+create file:./testdb/000307.ldb
+remove file ./testdb/000126.ldb
+remove file ./testdb/000130.ldb
+remove file ./testdb/000261.ldb
+create file:./testdb/000308.ldb
+create file:./testdb/000309.ldb
+create file:./testdb/000310.ldb
+create file:./testdb/000311.ldb
+remove file ./testdb/000134.ldb
+remove file ./testdb/000262.ldb
+remove file ./testdb/000304.ldb
+create file:./testdb/000312.ldb
+create file:./testdb/000313.ldb
+create file:./testdb/000314.ldb
+remove file ./testdb/000139.ldb
+remove file ./testdb/000142.ldb
+remove file ./testdb/000147.ldb
+remove file ./testdb/000263.ldb
+remove file ./testdb/000264.ldb
+remove file ./testdb/000307.ldb
+remove file ./testdb/000311.ldb
+create file:./testdb/000315.ldb
+create file:./testdb/000316.ldb
+create file:./testdb/000317.ldb
+create file:./testdb/000318.ldb
+create file:./testdb/000319.ldb
+create file:./testdb/000320.ldb
+create file:./testdb/000321.ldb
+remove file ./testdb/000151.ldb
+remove file ./testdb/000265.ldb
+remove file ./testdb/000314.ldb
+create file:./testdb/000322.ldb
+create file:./testdb/000323.ldb
+create file:./testdb/000324.ldb
+create file:./testdb/000325.ldb
+remove file ./testdb/000152.ldb
+remove file ./testdb/000156.ldb
+remove file ./testdb/000266.ldb
+remove file ./testdb/000317.ldb
+create file:./testdb/000326.ldb
+create file:./testdb/000327.ldb
+create file:./testdb/000328.ldb
+remove file ./testdb/000161.ldb
+remove file ./testdb/000267.ldb
+remove file ./testdb/000268.ldb
+remove file ./testdb/000321.ldb
+create file:./testdb/000329.ldb
+create file:./testdb/000330.ldb
+create file:./testdb/000331.ldb
+remove file ./testdb/000163.ldb
+remove file ./testdb/000164.ldb
+remove file ./testdb/000269.ldb
+create file:./testdb/000332.ldb
+create file:./testdb/000333.ldb
+create file:./testdb/000334.ldb
+create file:./testdb/000335.ldb
+create file:./testdb/000336.ldb
+remove file ./testdb/000166.ldb
+remove file ./testdb/000270.ldb
+remove file ./testdb/000328.ldb
+create file:./testdb/000337.ldb
+create file:./testdb/000338.ldb
+create file:./testdb/000339.ldb
+create file:./testdb/000340.ldb
+create file:./testdb/000341.ldb
+remove file ./testdb/000195.ldb
+remove file ./testdb/000196.ldb
+remove file ./testdb/000199.ldb
+remove file ./testdb/000271.ldb
+remove file ./testdb/000331.ldb
+create file:./testdb/000342.ldb
+create file:./testdb/000343.ldb
+create file:./testdb/000344.ldb
+remove file ./testdb/000203.ldb
+remove file ./testdb/000207.ldb
+remove file ./testdb/000211.ldb
+remove file ./testdb/000272.ldb
+remove file ./testdb/000336.ldb
+create file:./testdb/000345.ldb
+create file:./testdb/000346.ldb
+create file:./testdb/000347.ldb
+create file:./testdb/000348.ldb
+create file:./testdb/000349.ldb
+create file:./testdb/000350.ldb
+create file:./testdb/000351.ldb
+create file:./testdb/000352.ldb
+create file:./testdb/000353.ldb
+create file:./testdb/000354.ldb
+create file:./testdb/000355.ldb
+remove file ./testdb/000215.ldb
+remove file ./testdb/000273.ldb
+remove file ./testdb/000341.ldb
+create file:./testdb/000356.ldb
+create file:./testdb/000357.ldb
+create file:./testdb/000358.ldb
+create file:./testdb/000359.ldb
+create file:./testdb/000360.ldb
+create file:./testdb/000361.ldb
+create file:./testdb/000362.ldb
+create file:./testdb/000363.ldb
+create file:./testdb/000364.ldb
+remove file ./testdb/000249.ldb
+remove file ./testdb/000250.ldb
+remove file ./testdb/000251.ldb
+remove file ./testdb/000252.ldb
+remove file ./testdb/000274.ldb
+remove file ./testdb/000279.ldb
+remove file ./testdb/000283.ldb
+remove file ./testdb/000287.ldb
+create file:./testdb/000365.ldb
+create file:./testdb/000366.ldb
+create file:./testdb/000367.ldb
+create file:./testdb/000368.ldb
+remove file ./testdb/000216.ldb
+remove file ./testdb/000220.ldb
+remove file ./testdb/000338.ldb
+remove file ./testdb/000339.ldb
+remove file ./testdb/000340.ldb
+remove file ./testdb/000342.ldb
+remove file ./testdb/000343.ldb
+remove file ./testdb/000344.ldb
+remove file ./testdb/000354.ldb
+create file:./testdb/000369.ldb
+create file:./testdb/000370.ldb
+create file:./testdb/000371.ldb
+create file:./testdb/000372.ldb
+create file:./testdb/000373.ldb
+create file:./testdb/000374.ldb
+create file:./testdb/000375.ldb
+create file:./testdb/000376.ldb
+create file:./testdb/000377.ldb
+create file:./testdb/000378.ldb
+create file:./testdb/000379.ldb
+create file:./testdb/000380.ldb
+remove file ./testdb/000223.ldb
+remove file ./testdb/000224.ldb
+remove file ./testdb/000355.ldb
+remove file ./testdb/000363.ldb
+remove file ./testdb/000364.ldb
+create file:./testdb/000381.ldb
+create file:./testdb/000382.ldb
+create file:./testdb/000383.ldb
+create file:./testdb/000384.ldb
+create file:./testdb/000385.ldb
+remove file ./testdb/000324.ldb
+remove file ./testdb/000325.ldb
+remove file ./testdb/000326.ldb
+remove file ./testdb/000327.ldb
+remove file ./testdb/000329.ldb
+remove file ./testdb/000330.ldb
+remove file ./testdb/000332.ldb
+remove file ./testdb/000333.ldb
+remove file ./testdb/000334.ldb
+remove file ./testdb/000335.ldb
+remove file ./testdb/000337.ldb
+remove file ./testdb/000353.ldb
+create file:./testdb/000386.ldb
+create file:./testdb/000387.ldb
+create file:./testdb/000388.ldb
+create file:./testdb/000389.ldb
+create file:./testdb/000390.ldb
+create file:./testdb/000391.ldb
+create file:./testdb/000392.ldb
+create file:./testdb/000393.ldb
+create file:./testdb/000394.ldb
+create file:./testdb/000395.ldb
+create file:./testdb/000396.ldb
+remove file ./testdb/000230.ldb
+remove file ./testdb/000232.ldb
+remove file ./testdb/000233.ldb
+remove file ./testdb/000235.ldb
+remove file ./testdb/000346.ldb
+create file:./testdb/000397.ldb
+create file:./testdb/000398.ldb
+create file:./testdb/000399.ldb
+create file:./testdb/000400.ldb
+remove file ./testdb/000310.ldb
+remove file ./testdb/000312.ldb
+remove file ./testdb/000313.ldb
+remove file ./testdb/000315.ldb
+remove file ./testdb/000316.ldb
+remove file ./testdb/000318.ldb
+remove file ./testdb/000319.ldb
+remove file ./testdb/000320.ldb
+remove file ./testdb/000322.ldb
+remove file ./testdb/000323.ldb
+remove file ./testdb/000352.ldb
+create file:./testdb/000401.ldb
+create file:./testdb/000402.ldb
+create file:./testdb/000403.ldb
+create file:./testdb/000404.ldb
+create file:./testdb/000405.ldb
+create file:./testdb/000406.ldb
+create file:./testdb/000407.ldb
+create file:./testdb/000408.ldb
+create file:./testdb/000409.ldb
+create file:./testdb/000410.ldb
+create file:./testdb/000411.ldb
+remove file ./testdb/000291.ldb
+remove file ./testdb/000293.ldb
+remove file ./testdb/000295.ldb
+remove file ./testdb/000350.ldb
+create file:./testdb/000412.ldb
+create file:./testdb/000413.ldb
+create file:./testdb/000414.ldb
+create file:./testdb/000415.ldb
+create file:./testdb/000416.ldb
+remove file ./testdb/000296.ldb
+remove file ./testdb/000298.ldb
+remove file ./testdb/000299.ldb
+remove file ./testdb/000300.ldb
+remove file ./testdb/000301.ldb
+remove file ./testdb/000302.ldb
+remove file ./testdb/000303.ldb
+remove file ./testdb/000305.ldb
+remove file ./testdb/000306.ldb
+remove file ./testdb/000308.ldb
+remove file ./testdb/000309.ldb
+remove file ./testdb/000351.ldb
+create file:./testdb/000417.ldb
+create file:./testdb/000418.ldb
+create file:./testdb/000419.ldb
+create file:./testdb/000420.ldb
+remove file ./testdb/000236.ldb
+remove file ./testdb/000238.ldb
+remove file ./testdb/000239.ldb
+remove file ./testdb/000347.ldb
+remove file ./testdb/000385.ldb
+create file:./testdb/000421.ldb
+create file:./testdb/000422.ldb
+create file:./testdb/000423.ldb
+create file:./testdb/000424.ldb
+create file:./testdb/000425.ldb
+create file:./testdb/000426.ldb
+create file:./testdb/000427.ldb
+create file:./testdb/000428.ldb
+remove file ./testdb/000241.ldb
+remove file ./testdb/000242.ldb
+remove file ./testdb/000348.ldb
+remove file ./testdb/000416.ldb
+create file:./testdb/000429.ldb
+create file:./testdb/000430.ldb
+create file:./testdb/000431.ldb
+create file:./testdb/000432.ldb
+remove file ./testdb/000275.ldb
+remove file ./testdb/000276.ldb
+remove file ./testdb/000277.ldb
+remove file ./testdb/000281.ldb
+remove file ./testdb/000285.ldb
+remove file ./testdb/000288.ldb
+remove file ./testdb/000290.ldb
+remove file ./testdb/000397.ldb
+create file:./testdb/000433.ldb
+create file:./testdb/000434.ldb
+create file:./testdb/000435.ldb
+create file:./testdb/000436.ldb
+create file:./testdb/000437.ldb
+remove file ./testdb/000225.ldb
+remove file ./testdb/000229.ldb
+remove file ./testdb/000345.ldb
+remove file ./testdb/000381.ldb
+用时:25s
+leveldb.num-files-at-level0
+0
+leveldb.num-files-at-level1
+0
+leveldb.num-files-at-level2
+48
+leveldb.num-files-at-level3
+26
+leveldb.num-files-at-level4
+0
+leveldb.num-files-at-level5
+0
+leveldb.num-files-at-level6
+0
+leveldb.stats
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        0        0         1        0       139
+  1        0        0         1      204       208
+  2       48       93         2      411       414
+  3       26       52         0       62        62
+
+leveldb.approximate-memory-usage
+9090152
+leveldb.sstables
+--- level 0 ---
+--- level 1 ---
+--- level 2 ---
+ 398:2113458['jjxqceekrhfnobworyd' @ 165920 : 1 .. 'jthlkkhkmpnfozgcodjiwlwsqu' @ 201872 : 1]
+ 399:2112113['jthqgvcfrdastjazmjff' @ 143406 : 1 .. 'kczkldzuohxanhlcya' @ 78769 : 1]
+ 400:1672564['kczmqltflvrqymm' @ 258145 : 1 .. 'kkldeqwcdlkgylcbtlkckoozgnmjr' @ 150579 : 1]
+ 401:2114462['kklfywvjjfknbfwcrjuoqvkjledft' @ 135519 : 1 .. 'ktrsignzzxaxawydbboeloeeg' @ 88035 : 1]
+ 402:2114688['ktrvzukxiqwlh' @ 109328 : 1 .. 'lcwlxxkrokk' @ 202860 : 1]
+ 403:2115567['lcwmvkfnbvuvvvzgikhfubqjt' @ 120994 : 1 .. 'lmenpwnmrtruqrxryxidyzs' @ 138365 : 1]
+ 404:2113389['lmepwvvlkpugrtjw' @ 203901 : 1 .. 'lvnigocjylkmasalgimkxvolgiwewc' @ 247294 : 1]
+ 405:2113376['lvnkpvolqdb' @ 180476 : 1 .. 'merupkvksjkvydfisyascnafte' @ 92917 : 1]
+ 406:2114744['meruslqgfqyim' @ 259967 : 1 .. 'mnyfnrmpcv' @ 90302 : 1]
+ 407:2114972['mnygeutruwrpjomrdfntruhyez' @ 170029 : 1 .. 'mxqkxmhutveyp' @ 246336 : 1]
+ 408:2114462['mxqmspdpcydpvirbhf' @ 42584 : 1 .. 'ngwoglbobo' @ 134123 : 1]
+ 409:2114365['ngwrmypewenwpxynaqdmq' @ 212389 : 1 .. 'nqaddurgiuqxldysckni' @ 169154 : 1]
+ 410:2111997['nqagcfgnynwucnympxujrxjkf' @ 108320 : 1 .. 'nyzsvzobeksvd' @ 35893 : 1]
+ 411:1701925['nyztipgoxyuoclijufjwmobrvipjzj' @ 143793 : 1 .. 'ogqohivxedgessetktajrzo' @ 150916 : 1]
+ 386:2113868['ogqqfgqvsyaleyfgvuwlxskj' @ 59291 : 1 .. 'oqejrdaqyqof' @ 3628 : 1]
+ 387:2113023['oqekwrgmmkdnmxukppnh' @ 113520 : 1 .. 'ozqaywajdvocotchlgtiqhho' @ 157469 : 1]
+ 388:2113944['ozqcumhxle' @ 192945 : 1 .. 'pizhlfjyeeupdphsvohxg' @ 187465 : 1]
+ 389:2113903['pizlmxxklftxxxweybsipoqfpkdr' @ 58035 : 1 .. 'pshsqqrdeic' @ 234161 : 1]
+ 390:2113825['pshudranarkwdtwkjizpoknpvnv' @ 169513 : 1 .. 'qbhieczojjqxdtuualuxkdaohnv' @ 183863 : 1]
+ 391:2113255['qbhjqofkzqmeixgifiuouiaegqlegu' @ 207681 : 1 .. 'qksbdvwnnroxyyxrsodqkrn' @ 178729 : 1]
+ 392:2113139['qksbpgeqspfwvantcllsni' @ 231464 : 1 .. 'qubieldaychoudamzxtkluv' @ 53433 : 1]
+ 393:2113866['qubionfgbmygapdv' @ 202100 : 1 .. 'rdnozcozthlbxwn' @ 58397 : 1]
+ 394:2114142['rdnqsenqpalhlqlxa' @ 207904 : 1 .. 'rnbihepjvvsylgvntb' @ 2666 : 1]
+ 395:2113898['rnbivdzuxbrbpbygqtvvsdq' @ 104430 : 1 .. 'rwcmxzindpriixfmctpnykzq' @ 22820 : 1]
+ 396:1619694['rwcnaxlddzujqmqaa' @ 9365 : 1 .. 'sdegfmqksacamvfcx' @ 111584 : 1]
+ 369:2115756['sdehhkuqsnywagcjrawsjsc' @ 81395 : 1 .. 'smhxeyagmnzzsbcxqjzaejggaxmsgq' @ 18287 : 1]
+ 370:2114750['smhypvnqmhfdqdkikqifssgf' @ 129359 : 1 .. 'svtjqgtfykkygmjwgwenaulqbdesw' @ 62511 : 1]
+ 371:2115160['svtorehnidacuj' @ 31693 : 1 .. 'tewbmapcymbqouzdjwsvcu' @ 52831 : 1]
+ 372:2115855['tewgfullsdcljesbxrsnoocpxlay' @ 157215 : 1 .. 'tojyzltqgwwdccrwtfawgsuyktjuj' @ 141671 : 1]
+ 373:2113366['tojznpepcnytzcnlidrbvpnomnxwa' @ 86310 : 1 .. 'txvldgjivbehprinccnggyyae' @ 12269 : 1]
+ 374:2113298['txvlmezxfmyuggt' @ 173647 : 1 .. 'uhbthfqqiz' @ 44834 : 1]
+ 375:2112882['uhbusopvhdkfsmjnlwirwzlcnd' @ 116226 : 1 .. 'uqpgfcvjsbstlc' @ 42676 : 1]
+ 376:2113765['uqpghbvicbpszghyxlyi' @ 15057 : 1 .. 'uzolyojacmeyeyllbkgho' @ 221786 : 1]
+ 377:2112948['uzotfdndxgewbtdqujgmgoaitfc' @ 124726 : 1 .. 'vixajqdciwxby' @ 95736 : 1]
+ 378:2116397['vixeqqaxpcwnninhfsmxrmbszmb' @ 80853 : 1 .. 'vsfrjxkbonqrkusasktrkubh' @ 19954 : 1]
+ 379:2112069['vsfurflnsgqerproagelcecqrza' @ 210622 : 1 .. 'wbwpkdeohjh' @ 163930 : 1]
+ 380:361753['wbwqgyimbnlgzmyzfajvvty' @ 231764 : 1 .. 'wdjwwtkgeu' @ 13820 : 1]
+ 356:2112897['wdkagnzyflarvm' @ 254034 : 1 .. 'wmmonnrslyzx' @ 5595 : 1]
+ 357:2114728['wmmqmztwrfxp' @ 37982 : 1 .. 'wvwvhpkoblsvwdbymhzjuda' @ 109141 : 1]
+ 358:2113883['wvxhprcpjnhsktq' @ 121910 : 1 .. 'xfavcfnobeoalmrazztszhy' @ 182535 : 1]
+ 359:2115188['xfaxxcaiywhkgscup' @ 160582 : 1 .. 'xopeqqxvlfguyhfyt' @ 177494 : 1]
+ 360:2116172['xophfvcglwydynogqo' @ 79847 : 1 .. 'xxzrrtwjtipdeswuoblmsljzf' @ 221030 : 1]
+ 361:2112083['xxztkcsjsfrasvwzkfw' @ 226888 : 1 .. 'yhgfuqpehg' @ 55211 : 1]
+ 362:2112299['yhggqvirsoomasijetd' @ 95194 : 1 .. 'yqpbysqkoqalbmpgrudwx' @ 196524 : 1]
+ 365:2113902['yqpgmitvjzgxfwv' @ 253313 : 1 .. 'yzxyipswcu' @ 243835 : 1]
+ 366:2113935['yzxyntydrurmpqgzcvsvaxhgvwpvx' @ 44440 : 1 .. 'zjkcyygtzdxxnfqzuvkjkouemhm' @ 91696 : 1]
+ 367:2113002['zjkdwubbslmdvdvljp' @ 148981 : 1 .. 'zsnzcquxkxxmwknmofptlncynp' @ 135565 : 1]
+ 368:1619604['zsoaxhlojbvsog' @ 169528 : 1 .. 'zzzzomznbdztqirlxjdyuubtmwsbuj' @ 63954 : 1]
+--- level 3 ---
+ 429:2113360['aaacroidul' @ 54884 : 1 .. 'ajfjntdpvlhnwoukzerwdcjmmyocy' @ 47577 : 1]
+ 430:2115996['ajfkrbzyqmbydaugzuvioz' @ 94047 : 1 .. 'askzwghvvdqruqgtowkkunoxakbtj' @ 81087 : 1]
+ 431:2113934['aslbaftwgbbtef' @ 124404 : 1 .. 'bcahyyamwrnqwqr' @ 242548 : 1]
+ 432:2109310['bcakpddahrcesphsmvgnw' @ 153006 : 1 .. 'bljoabymebt' @ 95026 : 1]
+ 382:2116371['bljobmnxhqapzaqejyomhtsoe' @ 108149 : 1 .. 'buyqsiqigvuggacytwbsyx' @ 39985 : 1]
+ 383:2113494['buyrpwsvxbhtbyfenmncmclxlf' @ 51793 : 1 .. 'cejtjrypfwxphzzzpvbjygajd' @ 144736 : 1]
+ 384:2114083['cejunxlwzdyxrkxukufmytvtwnkfut' @ 153658 : 1 .. 'cnpdymytgankpazrw' @ 43478 : 1]
+ 412:2113048['cnpfxzbanzyntyvnzolxz' @ 49904 : 1 .. 'cxdamuymkgeoiuvhbk' @ 103420 : 1]
+ 413:2114450['cxdapsnjosgcgnudwvg' @ 212955 : 1 .. 'dgnfvhofqoqhgxwjuvrc' @ 218214 : 1]
+ 414:2115273['dgnhthnnkjsd' @ 13350 : 1 .. 'dpszxdppkdwvmaqxfeqkakn' @ 104839 : 1]
+ 415:2114379['dptaycouamkk' @ 64048 : 1 .. 'dzgvpiugugzfkxmmshwinpemund' @ 26231 : 1]
+ 417:2113472['dzgwxjlvsducvns' @ 185759 : 1 .. 'eimfzbaksbfxuvwhwgxkclyaua' @ 75723 : 1]
+ 418:2113124['eimghiysdnjiwdgmsyafxeblduo' @ 168054 : 1 .. 'escmrzdjwqa' @ 26904 : 1]
+ 419:2115640['escpebcgccwhanvitqqtpkuz' @ 53490 : 1 .. 'fbivacxbvwzqqxqwib' @ 83775 : 1]
+ 433:2115112['fbivhrpegysbzv' @ 215735 : 1 .. 'fkymeyuvnyddzpuoakyfmmft' @ 91670 : 1]
+ 434:2114215['fkyosbmowhqlksio' @ 6382 : 1 .. 'fufkwefcrhvpauj' @ 22046 : 1]
+ 435:2115001['fufoobpiymtbinozdks' @ 221961 : 1 .. 'gdlwkimrbgfxuydeguyrk' @ 243549 : 1]
+ 436:2112049['gdmjlikixxvdrkphvrnidl' @ 205139 : 1 .. 'gmvolyqinkwnkmb' @ 176937 : 1]
+ 437:2110312['gmvoogjateblbni' @ 23763 : 1 .. 'gwkirpnnjhnsonzbq' @ 159020 : 1]
+ 422:2113522['gwkjcbgubzptelpsphpilypdmftw' @ 186047 : 1 .. 'hfnrupaupcztnpnwjhwoqelqky' @ 43788 : 1]
+ 423:2114789['hfntizrfkddzxabgojgeualgmnpwmq' @ 257431 : 1 .. 'hpbytjuuwmcvpivril' @ 13984 : 1]
+ 424:2112498['hpbyuynrrdnqk' @ 196401 : 1 .. 'hykzdtetrwyzxzcekecuorfnfewj' @ 46742 : 1]
+ 425:2113737['hylanoysztylxpbrpdidufeu' @ 185896 : 1 .. 'ihwpftpsvtgyovnuhuk' @ 159611 : 1]
+ 426:2115197['ihwqapuedexjt' @ 132869 : 1 .. 'ircgwkblatmfmwh' @ 161101 : 1]
+ 427:2112490['irckasttcljfy' @ 51763 : 1 .. 'jammavlrsnvz' @ 39416 : 1]
+ 428:2107794['jamnnqzzsrvpfflquoz' @ 206752 : 1 .. 'jjxopyqfkglgomqlxzh' @ 135181 : 1]
+--- level 4 ---
+--- level 5 ---
+--- level 6 ---
+

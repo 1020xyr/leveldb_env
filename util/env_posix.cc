@@ -572,6 +572,7 @@ class PosixEnv : public Env {
 
   Status NewWritableFile(const std::string& filename,
                          WritableFile** result) override {
+    printf("create file %s\n",filename.c_str());                      
     int fd = ::open(filename.c_str(),
                     O_TRUNC | O_WRONLY | O_CREAT | kOpenBaseFlags, 0644);
     if (fd < 0) {
@@ -585,6 +586,7 @@ class PosixEnv : public Env {
 
   Status NewAppendableFile(const std::string& filename,
                            WritableFile** result) override {
+    printf("create file %s\n",filename.c_str()); 
     int fd = ::open(filename.c_str(),
                     O_APPEND | O_WRONLY | O_CREAT | kOpenBaseFlags, 0644);
     if (fd < 0) {
@@ -616,6 +618,7 @@ class PosixEnv : public Env {
   }
 
   Status RemoveFile(const std::string& filename) override {
+    printf("remove file %s\n",filename.c_str());
     if (::unlink(filename.c_str()) != 0) {
       return PosixError(filename, errno);
     }
@@ -623,6 +626,7 @@ class PosixEnv : public Env {
   }
 
   Status CreateDir(const std::string& dirname) override {
+    printf("create directry %s\n",dirname.c_str());
     if (::mkdir(dirname.c_str(), 0755) != 0) {
       return PosixError(dirname, errno);
     }
@@ -630,6 +634,7 @@ class PosixEnv : public Env {
   }
 
   Status RemoveDir(const std::string& dirname) override {
+    printf("remove directory %s\n",dirname.c_str());
     if (::rmdir(dirname.c_str()) != 0) {
       return PosixError(dirname, errno);
     }
@@ -647,6 +652,7 @@ class PosixEnv : public Env {
   }
 
   Status RenameFile(const std::string& from, const std::string& to) override {
+    printf("rename file from %s to %s\n",from.c_str(),to.c_str());
     if (std::rename(from.c_str(), to.c_str()) != 0) {
       return PosixError(from, errno);
     }

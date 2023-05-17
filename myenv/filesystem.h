@@ -101,6 +101,7 @@ class DataFile : public File {  // 数据文件
 class Helper {  // 辅助函数
  public:
   static std::string GetParentDir(const std::string& path);  // 获取路径的父目录
+  static std::string GetFilename(const std::string& path);
 };
 
 class SimpleFileSystem {

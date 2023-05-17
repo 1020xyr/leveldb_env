@@ -38,7 +38,7 @@ std::vector<std::string> Directory::GetAllChildren() {
   std::lock_guard<std::mutex> lk(data_mu_);
   std::vector<std::string> ans;
   for (FileInfo info : childrens_) {
-    ans.emplace_back(info.first);
+    ans.emplace_back(Helper::GetFilename(info.first));  // 获取文件名
   }
   return ans;
 }
@@ -144,6 +144,16 @@ std::string Helper::GetParentDir(const std::string& path) {
   return dir;
 }
 
+std::string Helper::GetFilename(const std::string& path) {
+  std::size_t pos = path.find_last_of('/');
+  if (pos == std::string::npos) {
+    return path;
+  }
+  std::string filename = path.substr(pos + 1);  // 最后一个/后的字符串
+  // printf("path:%s filename:%s\n", path.c_str(), filename.c_str());
+  return filename;
+}
+
 SimpleFileSystem* SimpleFileSystem::GetInstance() {  // 内部静态变量的懒汉单例
   static SimpleFileSystem instance;
   return &instance;
@@ -152,7 +162,7 @@ SimpleFileSystem* SimpleFileSystem::GetInstance() {  // 内部静态变量的懒
 DataFile* SimpleFileSystem::NewDataFile(const std::string& fname) {
   std::lock_guard<std::mutex> lk(mu_);
   if (files_.count(fname) == 0) {  // 若不存在则创建新文件
-    printf("create data file:%s\n", fname.c_str());
+    printf("create file:%s\n", fname.c_str());
     DataFile* file = new DataFile();
     files_.emplace(fname, file);  // 添加文件名-数据文件映射
 
@@ -214,7 +224,7 @@ Status SimpleFileSystem::GetChildren(const std::string& dirname, std::vector<std
 
 Status SimpleFileSystem::RemoveFile(const std::string& fname) {
   std::lock_guard<std::mutex> lk(mu_);
-  printf("delete file %s\n", fname.c_str());
+  printf("remove file %s\n", fname.c_str());
   // 在父目录中删除该文件信息
   std::string parent = Helper::GetParentDir(fname);
   if (dirs_.count(parent) == 0) {
@@ -240,7 +250,7 @@ Status SimpleFileSystem::CreateDir(const std::string& dirname) {
 
 Status SimpleFileSystem::RemoveDir(const std::string& dirname) {
   std::lock_guard<std::mutex> lk(mu_);
-  printf("delete directory %s\n", dirname.c_str());
+  printf("remove directory %s\n", dirname.c_str());
   // 在父目录下删除目录信息
   std::string parent = Helper::GetParentDir(dirname);
   if (dirs_.count(parent) == 0) {

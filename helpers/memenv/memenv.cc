@@ -249,6 +249,7 @@ class InMemoryEnv : public EnvWrapper {
   }
 
   Status NewWritableFile(const std::string& fname, WritableFile** result) override {
+    printf("create file %s\n",fname.c_str());
     MutexLock lock(&mutex_);
     FileSystem::iterator it = file_map_.find(fname);
 
@@ -268,6 +269,7 @@ class InMemoryEnv : public EnvWrapper {
   }
 
   Status NewAppendableFile(const std::string& fname, WritableFile** result) override {
+    printf("create file %s\n",fname.c_str());
     MutexLock lock(&mutex_);
     FileState** sptr = &file_map_[fname];
     FileState* file = *sptr;
@@ -309,6 +311,7 @@ class InMemoryEnv : public EnvWrapper {
   }
 
   Status RemoveFile(const std::string& fname) override {
+    printf("remove file %s\n",fname.c_str());
     MutexLock lock(&mutex_);
     if (file_map_.find(fname) == file_map_.end()) {
       return Status::IOError(fname, "File not found");
@@ -333,6 +336,7 @@ class InMemoryEnv : public EnvWrapper {
   }
 
   Status RenameFile(const std::string& src, const std::string& target) override {
+    printf("rename file from %s to %s\n",src.c_str(),target.c_str());
     MutexLock lock(&mutex_);
     if (file_map_.find(src) == file_map_.end()) {
       return Status::IOError(src, "File not found");

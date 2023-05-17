@@ -10,4 +10,9 @@ simple_env.cc:利用filesystem.h实现的文件接口重写env.h中部分操作�
 test_env/test.cpp  
 向leveldb中写入数据并读取验证  
 
+更新：   
+修改GetChildren实现，返回相对路径，使得DBImpl::RemoveObsoleteFiles函数能正确删除过时文件  
+增加test_env/default.txt test_env/mem.txt test_env/simple.txt 各env下文件的操作记录
+
+
 相关博客：[leveldb自定义env](https://blog.csdn.net/freedom1523646952/article/details/130514899?spm=1001.2014.3001.5502)
